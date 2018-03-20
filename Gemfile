@@ -26,6 +26,8 @@ gem 'haml', '~> 5.0', '>= 5.0.4'
 gem 'simple_form', '~> 3.5', '>= 3.5.1'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'paperclip', '~> 6.0'
+gem 'cocoon', '~> 1.2', '>= 1.2.11'
+gem 'devise', '~> 4.4', '>= 4.4.3'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

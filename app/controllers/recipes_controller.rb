@@ -14,6 +14,7 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
+    @recipe.directions.new(params.require(:recipe).require(:directions_attributes).permit(:id, :step, :_destroy))
     if @recipe.save
       redirect_to @recipe, notice: "Successfully created new recipe"
     else
@@ -26,6 +27,7 @@ class RecipesController < ApplicationController
 
   def update
     if @recipe.update(recipe_params)
+      @recipe.directions.new(params.require(:recipe).require(:directions_attributes).permit(:id, :step, :_destroy))
       redirect_to @recipe
     else
       render 'edit'
@@ -45,6 +47,8 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:title, :description, :image)
+    params.require(:recipe)
+    .permit(:title, :description, :image, ingredients_attributes: [:id, :name, :_destroy],
+    directions_attributes: [:id, :step, :_destroy])
   end
 end
